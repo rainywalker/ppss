@@ -1,0 +1,15 @@
+.area{margin-bottom:10px;border:1px solid #ddd;height:250px;position: relative}
+.obj,.obj2,.obj3,.obj4{background:gold;width:100px;height:100px}
+.obj3{-webkit-transform:translate3d(100px,80px,0);}
+.obj3.go{-webkit-animation: move1 2s infinite}
+.obj4{-webkit-transform:translate3d(100px,80px,0);}
+@-webkit-keyframes move1 {
+  0%   {-webkit-transform: translate3d(100px, 80px, 0);}
+  50%  {-webkit-transform: translate3d(700px, 80px, 0);}
+  100% {-webkit-transform: translate3d(100px, 80px, 0);}
+}
+button{
+  box-shadow:0 1px 5px #333;position:absolute;left:10px;top:50%;margin-top:-25px;height:50px;
+  border:2px solid #b6971d;overflow: visible;border-radius:10px;background:none;padding:10px;
+  font-size:15px;cursor:pointer
+}

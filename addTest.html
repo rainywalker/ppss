@@ -3,10 +3,139 @@
 <head lang="ko">
 <meta charset="UTF-8">
 <title></title>
-<script src="lib.js"></script>
+<link href="aniTest.scss" rel="stylesheet" type="text/css">
+<script src="fps.js"></script>
 </head>
 <body>
+<div id="fps" style="position: fixed;right:0;top:0;background: red;color:#fff">
 
-<h1><span>test git</span></h1>
+</div>
+<div class="area">
+    <button type="button" class="play">Play</button>
+    <div class="obj" style="-webkit-transform:translate3d(100px,80px,0)">
+    </div>
+    <script>
+
+        var playBtn = document.querySelector(".play");
+        var obj = document.querySelector(".obj");
+        var matrix = new WebKitCSSMatrix(window.getComputedStyle(obj,null).webkitTransform).m41
+        playBtn.onclick = function() {
+            var speed = null;
+            var startX = new Date().getTime();
+            var go = setInterval(function(){
+                speed = matrix/20;
+                matrix += Math.ceil(speed);
+                obj.style.webkitTransform = "translate3d("+matrix+"px,80px,0)";
+                if (matrix >= 700) {
+
+                   // clearInterval(go);
+
+                    var fullBack = setInterval(function(){
+                        speed = matrix/20;
+                        matrix -= Math.ceil(speed)
+                        obj.style.webkitTransform = "translate3d("+matrix+"px,80px,0)";
+                        if (matrix <= 100) {
+                            clearInterval(fullBack);
+                            obj.style.webkitTransform = "translate3d("+100+"px,80px,0)";
+                        }
+                    },20)
+
+                }
+
+            },20);
+
+        }
+    </script>
+</div>
+
+<div class="area">
+    <button type="button" class="play2">Play</button>
+    <div class="obj2" style="position:absolute;top:80px;left:100px">
+    </div>
+    <script>
+        var playBtn2 = document.querySelector(".play2");
+        var obj2 = document.querySelector(".obj2");
+        var matrix2 = parseInt(obj2.style.left);
+        playBtn2.onclick = function() {
+            var speed2;
+            var go2 = setInterval(function(){
+                speed2 = matrix2/20;
+                matrix2 += Math.ceil(speed2)
+
+                obj2.style.left = matrix2 + "px";
+                if (matrix2 >= 700) {
+                    //clearInterval(go2);
+                    var fullBack2 = setInterval(function(){
+                        speed2 = matrix2/20;
+                        matrix2 -= Math.ceil(speed2)
+                        obj2.style.left = matrix2 + "px";
+                        if (matrix2 <= 100) {
+                            clearInterval(fullBack2)
+                            obj2.style.left = 100 + "px";
+                        }
+                    },20)
+
+                }
+
+            },20);
+
+        }
+    </script>
+</div>
+
+<div class="area">
+    <button type="button" class="play3">Play</button>
+    <div class="obj3"></div>
+    <script>
+        var playBtn3 = document.querySelector(".play3");
+        var obj3 = document.querySelector(".obj3");
+        playBtn3.onclick = function() {
+            obj3.setAttribute("class","obj3 go")
+        }
+    </script>
+</div>
+
+<div class="area">
+    <button type="button" class="play4">Play</button>
+    <div class="obj4"></div>
+    <script>
+        var playBtn4 = document.querySelector(".play4");
+        var obj4 = document.querySelector(".obj4");
+        playBtn4.onclick = function() {
+            var handle = 0;
+            var speed4;
+            renderLoop();
+            function renderLoop() {
+                var matrix4 = new WebKitCSSMatrix(window.getComputedStyle(obj4,null).webkitTransform).m41;
+                speed4 = matrix4/20;
+                matrix4 += Math.ceil(speed4);
+                obj4.style["-webkit-transform"] = "translate3d("+ matrix4 +"px,80px,0)";
+                handle = window.requestAnimationFrame(renderLoop);
+                if (matrix4 >= 700) {
+                    //window.cancelAnimationFrame(handle);
+                    handle = null;
+                    renderLoop2()
+                    function renderLoop2() {
+                        matrix4 -= Math.ceil(speed4);
+                        obj4.style["-webkit-transform"] = "translate3d("+ matrix4 +"px,80px,0)";
+                        handle = window.requestAnimationFrame(renderLoop2);
+                        if(matrix4 <= 100) {
+                            window.cancelAnimationFrame(handle)
+                            handle = null
+                            obj4.style["-webkit-transform"] = "translate3d(100px,80px,0)";
+                        }
+           //             console.log(matrix4)
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</div>
+
+<div class="area">
+
+</div>
 </body>
 </html>
