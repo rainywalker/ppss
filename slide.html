@@ -1,0 +1,302 @@
+<html>
+<head>
+    <!-- css -->
+    <style type="text/css">
+
+        img {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+            vertical-align: top;
+        }
+
+        div, li, a {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ol, ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        a:link, a:visited {
+            font-size: 1em;
+            color: #555555;
+            text-decoration: none;
+        }
+        a:hover, a:active {
+            font-size: 1em;
+            color: #CA3703;
+            text-decoration: underline;
+        }
+        #Photo-Data {
+            position: relative;
+            margin-top: 10px;
+            width: 400px;
+            height: 104px;
+        }
+        #Photo-Data #Photo-Wrapper {
+            position: relative;
+            left: 42px;
+            top: 17px;
+            width: 310px;
+            height: 71px;
+            overflow: hidden;
+        }
+        #Photo-Data #Photo-List {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width: 525px;
+        }
+        #Photo-Data #Photo-List li {
+            float: left;
+            margin-right: 5px;
+        }
+        #Photo-Data #Photo-Prev {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+        }
+        #Photo-Data #Photo-Next {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- 이미지 슬라이드 태그 영역 -->
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+<div id="Photo-Data" style="valign:top;">
+    <a href="#" id="Photo-Prev" onclick="_right();return false;"><img src="/image/banner/banner_off_move01.gif" onmouseover="this.src='/image/banner/banner_on_move01.gif';" onmouseout="this.src='/image/banner/banner_off_move01.gif';"alt="이전" /></a>
+    <div id="Photo-Wrapper">
+        <ul id="Photo-List">
+            <li><a href="#"><img src="img/ba1.jpg" alt="[사진]1" width="100" height="33" /></a></li>
+            <li><a href="#"><img src="img/ba2.jpg" alt="[사진]2" width="100" height="33" /></a></li>
+            <li><a href="#"><img src="img/ba3.jpg" alt="[사진]3" width="100" height="33" /></a></li>
+            <li><a href="#"><img src="img/ba4.jpg" alt="[사진]4" width="100" height="33" /></a></li>
+            <li><a href="#"><img src="img/ba5.jpg" alt="[사진]5" width="100" height="33" /></a></li>
+
+        </ul>
+    </div>
+    <a href="#" id="Photo-Next" onclick="_left();return false;"><img src="/image/banner/banner_off_move02.gif" onmouseover="this.src='/image/banner/banner_on_move02.gif';" onmouseout="this.src='/image/banner/banner_off_move02.gif';" alt="다음" /></a>
+</div>
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+
+<script>
+    //<![CDATA[
+    //******************************************************
+    //DIRECTION (슬라이드 방향 설정)
+    //DELAY_TIME (대기 시간 설정)
+    //******************************************************
+    var Direction = "LEFT";  //   LEFT | RIGHT
+    var DELAY_TIME = 1000;  //  밀리세컨드 (1/1000)
+
+    //******************************************************
+    //초기 세팅
+    //******************************************************
+    var Photo_Wrapper = document.getElementById("Photo-Wrapper");
+    var Photo_List = document.getElementById("Photo-List");
+
+
+    LIs = Photo_Wrapper.getElementsByTagName('li');
+    //cellWidth = LIs[0].offsetWidth+5;
+
+
+    Photo_List.style.position ="absolute";
+    Photo_List.style.top = "0px";
+    Photo_List.style.left = "0px";
+
+
+    //이미지의 갯수(LIs.length)가 3개 이하이면 이미지를 추가해준다.
+
+    //이미지를 연속적으로 슬라이딩 하기 위해서는 LEFT 이동시
+
+    //맨 앞의 이미지 두개를 맨뒤로 이동시켜야 하기 때문에 3개 이하로 셀렉트 했을경우
+
+    //빈 공간이 보이게 된다.
+
+    var i = 0;
+    while(LIs.length <= 3){
+        var newLI = LIs[i].cloneNode(true);
+        LIs[i].parentNode.appendChild(newLI);
+    }
+
+
+    //******************************************************
+    //초기 실행
+    //******************************************************
+
+    if (Direction=="LEFT") {
+        var final_x = -210;
+        //이미지 width : 100px 이고  margin : 5px 이므로 128px이 이미지의 간격임
+        //이미지가 두개씩 움직이므로 105*2 = 210 px 이 됨
+
+        var INTERVAL = setInterval(left, DELAY_TIME);
+    }
+    else if(Direction=="RIGHT"){
+        var final_x = 210;
+
+        //오른쪽 슬라이드로 변경하기위한 준비단계로
+        //위치를 조정하여 준다.
+
+        //기준이 되는 위치는 항상 left:0px 이므로
+        //오른쪽으로 슬라이드 하기 위해 left : -256 px 로 이동시켜 주어야 한다.
+        Photo_List.style.top = "0px";
+        Photo_List.style.left = "-210px";
+
+        var INTERVAL = setInterval(right, DELAY_TIME);
+    }
+
+    // 나머지는 js 파일에서 불러옴.
+
+
+    //******************************************************
+    //LEFT MOVE
+    //******************************************************
+    function _left(){
+        Direction="LEFT";
+        final_x = -210;
+        var elem = document.getElementById("Photo-List");
+
+        //슬라이드 진행중일 경우 클리어 시킴..
+        if(elem.moving) {
+
+            clearTimeout(elem.moving);
+            left(elem);
+        }
+
+        left(elem);
+    }
+
+    function left(){
+
+        moveSlideShow("Photo-List",final_x,0,10);
+    }
+
+    //******************************************************
+    //RIGHT MOVE
+    //******************************************************
+    function _right(){
+
+        Direction = "RIGHT";
+        final_x = 0;
+        var elem = document.getElementById("Photo-List");
+
+        if(elem.moving) {
+
+            clearTimeout(elem.moving);
+            right(elem);
+        }
+
+        right(elem);
+    }
+
+    function right(){
+        moveSlideShow("Photo-List",final_x,0,10);
+    }
+
+    //******************************************************
+    //SLIDE 처리 메소드
+    //실제로 이미지를 애니메이션 처리하는 메서드..
+    //setTimeout() 메서드로 단위px 만큼 반복적으로 이동시킨다.
+
+    //지정된위치(final_X) 에 도착하면
+    //반복적으로 움직이도록 하기 위하여
+    //맨 앞, 또는 맨뒤의 엘리먼트를 잘라내어
+    //맨 앞, 또는 맨뒤에 붙여준다.
+    //******************************************************
+    var moveSlideShow = function(elementId,final_x,final_y,interval){
+
+        var elem = document.getElementById(elementId);
+        var xPos = parseInt(elem.style.left);
+        var yPos = parseInt(elem.style.top);
+
+        //xPos 와 final_x 같아지면 엘리먼트를 뒤로 이동시킨다.
+        if(xPos == final_x){
+            if(Direction=="LEFT"){
+                attachLeft(elem);               //엘리먼트를 return;
+            }else if(Direction=="RIGHT"){
+                attachRIGHT(elem);              //엘리먼트를 이동시킨다.
+         return;
+            }
+        }
+
+        //슬라이드를 종료한 후
+        //위치를 이동시킨다.
+        if(elem.moving) clearTimeout(elem.moving);
+
+
+
+        // 이미지 슬라이드 무빙 가속
+        // 이 부분이 없으면 이미지가 같은 속도로 움직인다.
+        if((xPos == final_x) && (yPos == final_y)){
+            return true;
+        }
+        if(xPos < final_x){
+            var dist = Math.ceil((final_x - xPos)/10);
+            xPos = xPos + dist;
+        }
+        if(xPos > final_x){
+            var dist = Math.ceil((xPos - final_x)/10);
+            xPos = xPos - dist ;
+        }
+
+
+        elem.style.left = xPos +"px";
+        var repeat = "moveSlideShow('Photo-List',"+final_x+","+final_y+","+interval+")";
+        elem.moving = setTimeout(repeat,interval);
+
+
+    }
+
+
+
+    //******************************************************
+    //좌측이동시 엘리먼트 제거,추가,위치설정
+    //******************************************************
+    var attachLeft = function(elem){
+        var UL= elem;    //UL
+        var LIs = UL.getElementsByTagName('li');
+
+        var li_1 = LIs[0].cloneNode(true);
+        LIs[0].parentNode.appendChild(li_1);
+        LIs[0].parentNode.removeChild(LIs[0]);
+
+        li_1 = LIs[0].cloneNode(true);
+        LIs[0].parentNode.appendChild(li_1);
+        LIs[0].parentNode.removeChild(LIs[0]);
+
+
+        UL.style.left = "0px";
+    }
+
+
+    //******************************************************
+    //우측이동시 엘리먼트 제거,추가,위치설정
+    //******************************************************
+    var attachRIGHT = function(elem){
+        var UL= elem;    //UL
+        var LIs = UL.getElementsByTagName('li');
+
+        var li_1 = LIs[LIs.length-1].cloneNode(true);
+        LIs[0].parentNode.insertBefore(li_1,LIs[0]);
+        LIs[0].parentNode.removeChild(LIs[LIs.length-1]);
+
+        li_1 = LIs[LIs.length-1].cloneNode(true);
+        LIs[0].parentNode.insertBefore(li_1,LIs[0]);
+        LIs[0].parentNode.removeChild(LIs[LIs.length-1]);
+
+
+        UL.style.left = "-210px";
+    }
+    //]]>
+</script>
+
+
+</body>
+</html>

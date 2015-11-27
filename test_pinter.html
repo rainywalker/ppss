@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        li{border:1px solid red;position: absolute;box-sizing: border-box;width:150px}
+        #grid{position: relative;width:600px;border:1px solid blue}
+    </style>
+    <script src="underscore.js"></script>
+</head>
+
+<body>
+<div id="grid">
+    <ul>
+        <li style="height:100px"></li>
+        <li style="height:70px"></li>
+        <li style="height:120px"></li>
+        <li style="height:150px"></li>
+        <li style="height:110px"></li>
+        <li style="height:60px"></li>
+
+    </ul>
+</div>
+<script>
+
+
+    var grid = (function(){
+        var doc = document,
+                grid = doc.getElementById("grid"),
+                liChilds = doc.getElementsByTagName('li'),
+                i= 0,
+                len = liChilds.length;
+
+
+
+        var init = function() {
+            var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+
+
+
+
+
+        };
+
+        return {
+            init : init
+        }
+    }());
+
+    grid.init()
+
+
+
+
+
+    /**
+
+    for (; i<len; i++) {
+        liChilds[i].style['left'] = "0" + "px";
+        liChilds[i].style['top'] = "0" + "px";
+        liChilds[i].style['width'] = parseInt((grid.offsetWidth) / 3) + "px";
+    }
+
+    liChilds[0].style.left = (liChilds[0].offsetLeft) + "px";
+    liChilds[1].style.left = (liChilds[0].offsetLeft + liChilds[1].offsetWidth) + "px";
+    liChilds[2].style.left = (liChilds[1].offsetLeft + liChilds[2].offsetWidth) + "px";
+
+    liChilds[0].style.top = liChilds[0].offsetTop + "px";
+    liChilds[1].style.top = liChilds[0].offsetTop + "px";
+    liChilds[2].style.top = liChilds[0].offsetTop + "px";
+
+
+
+    var objArr, arr, min, getIndex;
+    objArr = [liChilds[0],liChilds[1],liChilds[2]]
+    arr = [liChilds[0].offsetHeight,liChilds[1].offsetHeight,liChilds[2].offsetHeight]
+
+    min = Math.min.apply(1000, arr);
+    getIndex = arr.indexOf(min);
+    liChilds[3].style.top = min + "px";
+    liChilds[3].style.left = objArr[getIndex].offsetLeft + "px";
+
+    arr.splice(getIndex,1)
+    objArr.splice(getIndex,1)
+
+    min = Math.min.apply(null, arr);
+    getIndex = arr.indexOf(min);
+    liChilds[4].style.top = min + "px";
+    liChilds[4].style.left = objArr[getIndex].offsetLeft + "px";
+
+    arr.splice(getIndex,1);
+    objArr.splice(getIndex,1);
+
+    min = Math.min.apply(null, arr);
+    getIndex = arr.indexOf(min);
+    liChilds[5].style.top = min + "px";
+    liChilds[5].style.left = objArr[getIndex].offsetLeft + "px";
+
+    */
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
