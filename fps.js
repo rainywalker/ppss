@@ -12,7 +12,9 @@ addEventListener("DOMContentLoaded",function(){
       avg = ( sum += fps ) / count++;
       requestAnimationFrame( calcFPS );
       fps_view.innerHTML =  parseInt(avg)
+
       //console.log(avg)
   };
   requestAnimationFrame( calcFPS );
 })
+

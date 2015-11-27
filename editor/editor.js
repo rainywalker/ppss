@@ -30,6 +30,7 @@ function btn() {
 }
 
 
+
 function btn_Go(num) {
     switch (num) {
         case 0 : document.execCommand('bold')

@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <script src="lib.ts" type="text/javascript"></script>
+	<style>
+		.photoGallery {
+			width: 250px;
+			overflow-x: auto;
+			overflow-y: hidden;
+			white-space: nowrap;
+			/* Sets up points to which scrolling
+               will snap along x-axis */
+			scroll-snap-points-x: repeat(100%);
+			/* Requires that scrolling always end at a snap point when
+               the operation completes (hard snap) */
+			scroll-snap-type:proximity;
+		}
+	</style>
+
 </head>
 <body>
+<h1>가족사진</h1>
+<ul id="imgGall">
+	<li><a class="gall" title="장원이1" href="test1.jpg" >우리아들1</a></li>
+	<li><a class="gall" title="주원이1" href="test2.jpg"  >우리아들2</a></li>
+	<li><a class="gall" title="주원이2" href="test3.jpg"  >우리아들3</a></li>
+	<li><a class="gall" title="장원이2" href="test4.jpg" >우리아들4</a></li>
+</ul>
+<img src="" id="placeholder" width="300" height="200">	
+<div id="desc">select the pic</div>
 
+
+<div class="photoGallery">
+	<img src="test1.jpg" width="250" height="150">
+	<img src="test2.jpg" width="250" height="150">
+	<img src="test3.jpg" width="250" height="150">
+	<img src="test4.jpg" width="250" height="150">
+</div>
+<script type="text/javascript" src="lib.js" async="async"></script>
 </body>
 </html>
