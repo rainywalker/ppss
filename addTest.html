@@ -22,7 +22,7 @@
         playBtn.onclick = function() {
             var speed = null;
             var startX = new Date().getTime();
-            var go = setInterval(function(){
+            var go = setTimeout(function(){
                 speed = matrix/20;
                 matrix += Math.ceil(speed);
                 obj.style.webkitTransform = "translate3d("+matrix+"px,80px,0)";

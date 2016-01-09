@@ -1,0 +1,192 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '--save', 'react' ]
+2 info using npm@2.10.1
+3 info using node@v0.10.36
+4 verbose config Skipping project config: /Users/jaelomin/.npmrc. (matches userconfig)
+5 verbose install initial load of /Users/jaelomin/package.json
+6 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/bower/package.json
+7 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/gulp/package.json
+8 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/gulp-absurd/package.json
+9 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/gulp-iconfont/package.json
+10 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/gulp-uglify/package.json
+11 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/jekyll/package.json
+12 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/npm/package.json
+13 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/react/package.json
+14 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/react-dom/package.json
+15 verbose installManyTop reading scoped package data from /Users/jaelomin/node_modules/underscore/package.json
+16 info package.json bower@1.4.1 No license field.
+17 info package.json gulp-absurd@0.0.2 No license field.
+18 info package.json gulp-iconfont@5.0.0 No license field.
+19 verbose readDependencies loading dependencies from /Users/jaelomin/package.json
+20 silly cache add args [ 'react', null ]
+21 verbose cache add spec react
+22 silly cache add parsed spec { raw: 'react',
+22 silly cache add   scope: null,
+22 silly cache add   name: 'react',
+22 silly cache add   rawSpec: '',
+22 silly cache add   spec: '*',
+22 silly cache add   type: 'range' }
+23 silly addNamed react@*
+24 verbose addNamed "*" is a valid semver range for react
+25 silly addNameRange { name: 'react', range: '*', hasData: false }
+26 silly mapToRegistry name react
+27 silly mapToRegistry using default registry
+28 silly mapToRegistry registry https://registry.npmjs.org/
+29 silly mapToRegistry uri https://registry.npmjs.org/react
+30 verbose addNameRange registry:https://registry.npmjs.org/react not in flight; fetching
+31 verbose request uri https://registry.npmjs.org/react
+32 verbose request no auth needed
+33 info attempt registry request try #1 at 14:58:32
+34 verbose request id 0a7b83602fc7078d
+35 verbose etag "EB04X51PL1BKC4DDNDRKL2R8V"
+36 http request GET https://registry.npmjs.org/react
+37 http 304 https://registry.npmjs.org/react
+38 silly get cb [ 304,
+38 silly get   { date: 'Fri, 04 Dec 2015 05:58:32 GMT',
+38 silly get     via: '1.1 varnish',
+38 silly get     'cache-control': 'max-age=60',
+38 silly get     etag: '"EB04X51PL1BKC4DDNDRKL2R8V"',
+38 silly get     age: '0',
+38 silly get     connection: 'keep-alive',
+38 silly get     'x-served-by': 'cache-nrt6125-NRT',
+38 silly get     'x-cache': 'HIT',
+38 silly get     'x-cache-hits': '1',
+38 silly get     'x-timer': 'S1449208712.959699,VS0,VE132',
+38 silly get     vary: 'Accept' } ]
+39 verbose etag https://registry.npmjs.org/react from cache
+40 verbose get saving react to /Users/jaelomin/.npm/registry.npmjs.org/react/.cache.json
+41 silly addNameRange number 2 { name: 'react', range: '*', hasData: true }
+42 silly addNameRange versions [ 'react',
+42 silly addNameRange   [ '0.0.1',
+42 silly addNameRange     '0.0.2',
+42 silly addNameRange     '0.0.3',
+42 silly addNameRange     '0.1.2',
+42 silly addNameRange     '0.2.0',
+42 silly addNameRange     '0.2.1',
+42 silly addNameRange     '0.2.2',
+42 silly addNameRange     '0.2.3',
+42 silly addNameRange     '0.2.4',
+42 silly addNameRange     '0.2.5',
+42 silly addNameRange     '0.2.6',
+42 silly addNameRange     '0.3.0',
+42 silly addNameRange     '0.3.4',
+42 silly addNameRange     '0.3.5',
+42 silly addNameRange     '0.5.0',
+42 silly addNameRange     '0.5.1',
+42 silly addNameRange     '0.5.2',
+42 silly addNameRange     '0.6.0',
+42 silly addNameRange     '0.6.1',
+42 silly addNameRange     '0.6.2',
+42 silly addNameRange     '0.6.3',
+42 silly addNameRange     '0.7.0',
+42 silly addNameRange     '0.7.1',
+42 silly addNameRange     '0.8.0',
+42 silly addNameRange     '0.9.0-rc1',
+42 silly addNameRange     '0.9.0',
+42 silly addNameRange     '0.10.0-rc1',
+42 silly addNameRange     '0.10.0',
+42 silly addNameRange     '0.11.0-rc1',
+42 silly addNameRange     '0.11.0',
+42 silly addNameRange     '0.11.1',
+42 silly addNameRange     '0.11.2',
+42 silly addNameRange     '0.12.0-rc1',
+42 silly addNameRange     '0.12.0',
+42 silly addNameRange     '0.12.1',
+42 silly addNameRange     '0.12.2',
+42 silly addNameRange     '0.13.0-alpha.1',
+42 silly addNameRange     '0.13.0-alpha.2',
+42 silly addNameRange     '0.13.0-beta.1',
+42 silly addNameRange     '0.13.0-beta.2',
+42 silly addNameRange     '0.13.0-rc1',
+42 silly addNameRange     '0.13.0-rc2',
+42 silly addNameRange     '0.13.0',
+42 silly addNameRange     '0.13.1',
+42 silly addNameRange     '0.13.2',
+42 silly addNameRange     '0.13.3',
+42 silly addNameRange     '0.14.0-alpha1',
+42 silly addNameRange     '0.14.0-alpha2',
+42 silly addNameRange     '0.14.0-alpha3',
+42 silly addNameRange     '0.14.0-beta1',
+42 silly addNameRange     '0.14.0-beta2',
+42 silly addNameRange     '0.14.0-beta3',
+42 silly addNameRange     '0.14.0-rc1',
+42 silly addNameRange     '0.14.0',
+42 silly addNameRange     '0.14.1',
+42 silly addNameRange     '0.14.2',
+42 silly addNameRange     '0.14.3' ] ]
+43 silly addNamed react@0.14.3
+44 verbose addNamed "0.14.3" is a plain semver version for react
+45 silly cache afterAdd react@0.14.3
+46 verbose afterAdd /Users/jaelomin/.npm/react/0.14.3/package/package.json not in flight; writing
+47 verbose afterAdd /Users/jaelomin/.npm/react/0.14.3/package/package.json written
+48 silly install resolved [ { name: 'react',
+48 silly install resolved     description: 'React is a JavaScript library for building user interfaces.',
+48 silly install resolved     version: '0.14.3',
+48 silly install resolved     keywords: [ 'react' ],
+48 silly install resolved     homepage: 'https://github.com/facebook/react/tree/master/npm-react',
+48 silly install resolved     bugs: { url: 'https://github.com/facebook/react/issues' },
+48 silly install resolved     license: 'BSD-3-Clause',
+48 silly install resolved     files:
+48 silly install resolved      [ 'LICENSE',
+48 silly install resolved        'PATENTS',
+48 silly install resolved        'addons.js',
+48 silly install resolved        'react.js',
+48 silly install resolved        'addons/',
+48 silly install resolved        'dist/',
+48 silly install resolved        'lib/' ],
+48 silly install resolved     main: 'react.js',
+48 silly install resolved     repository:
+48 silly install resolved      { type: 'git',
+48 silly install resolved        url: 'git+https://github.com/facebook/react.git' },
+48 silly install resolved     engines: { node: '>=0.10.0' },
+48 silly install resolved     dependencies: { envify: '^3.0.0', fbjs: '^0.3.1' },
+48 silly install resolved     browserify: { transform: [Object] },
+48 silly install resolved     _id: 'react@0.14.3',
+48 silly install resolved     _shasum: 'b82e7b049ee3e1e264d24ae7ea20d76e51126778',
+48 silly install resolved     _resolved: 'https://registry.npmjs.org/react/-/react-0.14.3.tgz',
+48 silly install resolved     _from: 'react@*',
+48 silly install resolved     scripts: {},
+48 silly install resolved     _npmVersion: '2.14.7',
+48 silly install resolved     _nodeVersion: '4.2.2',
+48 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+48 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object] ],
+48 silly install resolved     dist:
+48 silly install resolved      { shasum: 'b82e7b049ee3e1e264d24ae7ea20d76e51126778',
+48 silly install resolved        tarball: 'http://registry.npmjs.org/react/-/react-0.14.3.tgz' },
+48 silly install resolved     directories: {},
+48 silly install resolved     readme: 'ERROR: No README data found!' } ]
+49 info install react@0.14.3 into /Users/jaelomin
+50 info installOne react@0.14.3
+51 verbose installOne of react to /Users/jaelomin not in flight; installing
+52 verbose lock using /Users/jaelomin/.npm/_locks/react-c591c5b5324e5949.lock for /Users/jaelomin/node_modules/react
+53 silly install write writing react 0.14.3 to /Users/jaelomin/node_modules/react
+54 verbose unbuild node_modules/react
+55 silly gentlyRm /Users/jaelomin/node_modules/react is being purged from base /Users/jaelomin
+56 verbose gentlyRm don't care about contents; nuking /Users/jaelomin/node_modules/react
+57 silly vacuum-fs purging /Users/jaelomin/node_modules/react
+58 verbose unlock done using /Users/jaelomin/.npm/_locks/react-c591c5b5324e5949.lock for /Users/jaelomin/node_modules/react
+59 verbose stack Error: EACCES, unlink '/Users/jaelomin/node_modules/react/node_modules/.bin/envify'
+60 verbose cwd /Users/jaelomin/data/ppss/react_pjt
+61 error Darwin 15.0.0
+62 error argv "node" "/usr/local/bin/npm" "install" "--save" "react"
+63 error node v0.10.36
+64 error npm  v2.10.1
+65 error path /Users/jaelomin/node_modules/react/node_modules/.bin/envify
+66 error code EACCES
+67 error errno 3
+68 error Error: EACCES, unlink '/Users/jaelomin/node_modules/react/node_modules/.bin/envify'
+68 error  { [Error: EACCES, unlink '/Users/jaelomin/node_modules/react/node_modules/.bin/envify']
+68 error   errno: 3,
+68 error   code: 'EACCES',
+68 error   path: '/Users/jaelomin/node_modules/react/node_modules/.bin/envify' }
+69 error Please try running this command again as root/Administrator.
+70 verbose exit [ 3, true ]
+71 verbose unbuild node_modules/react
+72 silly gentlyRm /Users/jaelomin/node_modules/react is being purged from base /Users/jaelomin
+73 verbose gentlyRm don't care about contents; nuking /Users/jaelomin/node_modules/react
+74 silly vacuum-fs purging /Users/jaelomin/node_modules/react
+75 error error rolling back Error: EACCES, unlink '/Users/jaelomin/node_modules/react/node_modules/.bin/envify'
+75 error error rolling back  { [Error: EACCES, unlink '/Users/jaelomin/node_modules/react/node_modules/.bin/envify']
+75 error error rolling back   errno: 3,
+75 error error rolling back   code: 'EACCES',
+75 error error rolling back   path: '/Users/jaelomin/node_modules/react/node_modules/.bin/envify' }

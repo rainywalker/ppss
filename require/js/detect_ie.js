@@ -25,7 +25,7 @@ function detect_ie() {
         if(agent.indexOf('msie') == -1) return 11;
         return parseFloat(/msie ([d]+)/.exec(agent)[1])
     }
+
 }
 
 
-alert("test")
