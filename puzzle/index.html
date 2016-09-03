@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="puzzle.js"></script>
+    <style>
+    *{margin:0;padding:0}
+    #wrap{}
+    #slider{overflow:hidden;position: absolute;height:80px}
+    li{float:left;width:100px;height:80px;background:red;list-style: none;margin-right:10px}
+    .box{overflow:hidden;width:420px;height:80px;position: relative}
+    button{border:1px solid red;width:80px;height:20px;;cursor: pointer}
+    #btns{margin-top: 20px}
+    </style>
+</head>
+<body>
+    <button id="ap">apButton</button>
+<div id="wrap">
+    <div class="box">
+        <ul id="slider" style="left:0">
+            <li><a href="#">test1</a></li>
+            <li><a href="#">test2</a></li>
+            <li><a href="#">test3</a></li>
+            <li><a href="#">test4</a></li>
+        </ul>
+    </div>
+    <div id="btns">
+        <button type="button">prev</button>
+        <button type="button">next</button>
+    </div>
+</div>
+<script>
+    var doc = document,
+        btns = doc.getElementsByTagName('button'),
+
+
+        slider = doc.getElementById('slider'),
+        slider_obj = slider.getElementsByTagName('li'),
+        objWidth = slider_obj[0].offsetWidth,
+        current_x = 0,
+        first_x,
+        last_x;
+
+
+    function moveElement(ele_id, final_x, interval) {
+        var elem = doc.getElementById('slider');
+        var xpos = parseInt(elem.style.left),
+            dist;
+        if (elem.move) {
+            clearTimeout(elem.move)
+        }
+        if (xpos == final_x) {
+            return true;
+        }
+        if (xpos < final_x) {
+            dist = Math.ceil((current_x - xpos)/10)
+            xpos += dist;
+        }
+        if (xpos > final_x) {
+            dist = Math.ceil((xpos - current_x)/10)
+            xpos -= dist;
+        }
+        elem.style.left = xpos + 'px';
+        var repeat = "moveElement('"+ele_id+"'," + final_x + "," + interval+")";
+        elem.move = setTimeout(repeat,interval);
+
+    }
+
+    slider.style.width = (objWidth * slider.getElementsByTagName('li').length+40) + 'px';
+    slider.style.left = 0;
+    for (var i=0; i<btns.length; i++) {
+        btns[i].onclick = function() {
+            if (this.firstChild.nodeValue == 'prev') {
+
+                current_x += objWidth;
+                first_x = objWidth * (slider_obj.length-1)
+                if (current_x  >= first_x ) {
+                    current_x = first_x;
+                }
+                moveElement("slider",current_x,10)
+            }
+            else {
+                console.log(current_x)
+                current_x -= objWidth;
+                last_x = -(objWidth * (slider_obj.length-1))
+                if (current_x <= last_x) {
+                    current_x = last_x;
+                }
+                moveElement("slider",current_x,10)
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aniTest</title>
+</head>
+<style>
+    *{margin:0;padding:0}
+    #slider{position: relative;width:320px;height:80px;overflow: hidden;margin:0 auto}
+    ul{overflow: hidden; position: relative;height:80px}
+    li{width:100px;height:80px;background:red;float:left;margin-right:10px;list-style: none}
+    #btns{padding-top:20px;text-align: center}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+var doc = document;
+window.onload = function() {
+
+    var viewArea = doc.getElementById('viewArea'),
+        slider = doc.getElementById('slider'),
+        sliderObj = slider.getElementsByTagName("li"),
+        objMargin = 10 * sliderObj.length,
+        objWidth = sliderObj[0].offsetWidth + 10,
+
+        btnsWrap = doc.getElementById('btns'),
+        btns = btnsWrap.getElementsByTagName('button'),
+        final_x = 0,
+        first_obj = sliderObj[0].cloneNode(true),
+        last_obj = sliderObj[sliderObj.length-1].cloneNode(true),
+        firstCoords, lastCoords;
+
+    slider.style.left = 0
+    slider.style.width = (objWidth * (sliderObj.length)) + objMargin + 'px';
+
+    function btn() {
+        for (var i=0; i<btns.length; i++) {
+            btns[i].onclick = function() {
+                if (this.firstChild.nodeValue != 'next') {
+                    final_x += objWidth;
+                    firstCoords = objWidth * 2
+                    if (final_x >= firstCoords) {
+                        final_x = firstCoords
+                    }
+                    last_obj
+                    movement('slider',final_x, 20)
+                }
+                else {
+                    final_x -= objWidth;
+                    lastCoords = -(objWidth * (sliderObj.length-1));
+                    if (final_x <= lastCoords) {
+                        final_x = lastCoords
+                    }
+                    movement('slider', final_x, 20)
+                }
+            }
+        }
+    }
+    btn()
+}
+    function movement(ele_id, final_x, delay) {
+        var elem = doc.getElementById(ele_id),
+            xpos = parseInt(elem.style.left,10),
+            dist;
+
+        if (elem.move) {
+            clearTimeout(elem.move)
+        }
+        if (xpos === final_x) {
+            return true;
+        }
+        if (xpos < final_x) {
+            dist = Math.ceil((final_x-xpos)/10)
+            xpos += dist
+        }
+        if (xpos > final_x) {
+            dist = Math.ceil((xpos-final_x)/10)
+            xpos -= dist;
+        }
+
+        elem.style.left = xpos + 'px';
+        var repeat = "movement('"+ele_id+"'," + final_x + ","+delay + ")";
+        elem.move = setTimeout(repeat,delay);
+    }
+// $(function(){
+//     var slideUl = $("div.slider").css('overflow', 'hidden').children("ul")
+//     , imgs = slideUl.find("li")
+//     , imgWidth = imgs[0].offsetWidth
+//     , imgLength = imgs.length
+//     , totalWidth = imgWidth * imgLength
+//     , current = 1;
+//
+//     $(".slider-nav").show().on("click", "button", function(){
+//
+//         var direction = $(this).text(), loc = imgWidth;
+//
+//         if (direction == 'next') {
+//             ++current
+//         }
+//         else {
+//             --current
+//         }
+//
+//
+//         if (current <= 0) {
+//             current = imgLength;
+//             loc = totalWidth - imgWidth;
+//             direction = 'next';
+//         } else if ( current > imgLength ) {
+//             current = 1;
+//             loc = 0;
+//         }
+//         transition( slideUl, loc, direction ); // 애니메이션 이동하기
+//     });
+//
+//     function transition( container, loc, direction )
+//     {
+//
+//         var unit;
+//         if  ( direction && loc !== 0 ) {
+//             unit = ( direction  === 'next' ) ? "-=" : "+=" ;
+//         }
+//         container.animate({
+//             'marginLeft' : (unit) ? unit + loc: loc
+//         }, 300);
+//     }
+//
+//     $('#ppp').find('span').end().css('border','1px solid red')
+// })
+</script>
+
+<body>
+    <p id="ppp"><span>Hello</span>how are u</p>
+    <div id="slider">
+        <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
+    </div>
+    <div id="btns" class="slider-nav">
+    <button data-dir="prev" > 이전 </button>
+    <button data-dir="next" > 다음 </button>
+</div>
+</body>
+</html>

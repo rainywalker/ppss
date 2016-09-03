@@ -1,0 +1,6 @@
+#wrap{}
+#wrap #header{height:100px;background: gold}
+#wrap #container{overflow:hidden;background: pink}
+#wrap #container .sideBar{float:left;background:blue;height:100px;width:150px;}
+#wrap #container .contents{overflow: hidden;background: hotpink}
+#wrap #footer{height:100px;background: black}

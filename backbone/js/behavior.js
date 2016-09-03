@@ -3,6 +3,9 @@
  *
  */
 
+
+console.log("d")
+
 (function(){
     /**
      *
@@ -77,7 +80,7 @@
         },
         addRide : function(e) {
             e.preventDefault();
-            var formData = {};
+            var formData = {};p
             $("#addRide").children("input").each(function(i, el){
                 if ($(el).val() !== "") {
                     formData[el.id] = $(el).val();
@@ -106,7 +109,7 @@
             "click #add" : "addRide"
         }
     });
-    var ridesView = new RidesView()
+    var ridesView = new RidesView();
 })();
 
 

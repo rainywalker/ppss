@@ -1,0 +1,8 @@
+*{margin:0;padding:0;line-height: normal}
+li{list-style: none}
+
+#view{overflow: hidden;position: relative;font-size: 0;width:430px}
+#box{display:inline-block}
+#box li{float:left;margin-left:10px}
+#box li:first-child{margin-left:0}
+#box li a{display:inline-block;height:80px;width:100px;background:green}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aniTest</title>
+</head>
+<style>
+    *{margin:0;padding:0}
+    .viewArea{position: relative;width:320px;height:80px;overflow: hidden;margin:0 auto}
+    ul{overflow: hidden; position: absolute;height:80px}
+    li{width:100px;height:80px;background:red;float:left;margin-right:10px;list-style: none}
+    #btns{padding-top:20px;text-align: center}
+</style>
+<script>
+var doc = document;
+window.onload = function(){
+
+        var viewArea = doc.getElementById('viewArea'),
+        slider = doc.getElementById('slider'),
+        sliderObj = slider.getElementsByTagName('li'),
+        objMargin = 10 * sliderObj.length,
+        objWidth = sliderObj[0].offsetWidth + 10,
+
+        btnsWrap = doc.getElementById('btns'),
+        btns = btnsWrap.getElementsByTagName('button'),
+        final_x = 0,
+        dir = 'left',
+
+        firstCoords, lastCoords;
+
+    slider.style.left = 0
+    slider.style.width = (objWidth * (sliderObj.length)) + objMargin + 'px';
+
+    function btn() {
+        for (var i=0; i<btns.length; i++) {
+            btns[i].onclick = function() {
+
+                var elem = doc.getElementById('slider');
+
+                if (this.firstChild.nodeValue == 'next') {
+
+                    dir = 'left'
+                    final_x = -(objWidth)
+                    if(elem.move) {
+                        clearTimeout(elem.move);
+
+                    }
+                    movement('slider',final_x, 20,dir)
+
+
+                }
+                else {
+                    dir = 'right';
+                    final_x = 0;
+                    if(elem.move) {
+                        clearTimeout(elem.move);
+
+                    }
+                    movement('slider', final_x, 20,dir)
+                }
+            }
+        }
+    }
+    btn()
+
+}
+function movement(ele_id, final_x, delay,arr) {
+    var elem = doc.getElementById(ele_id),
+        xpos = parseInt(elem.style.left,10),
+        dist,
+        first_obj = sliderObj[0].cloneNode(true),
+        last_obj = sliderObj[sliderObj.length-1].cloneNode(true);
+
+    if (elem.move) {
+        clearTimeout(elem.move)
+    }
+    if (xpos === final_x) {
+        if (dir == 'right') {
+
+            slider.insertBefore(last_obj,sliderObj[0])
+            slider.removeChild(sliderObj[sliderObj.length-1])
+            slider.style.left = -(objWidth) + 'px';
+        }
+        else {
+            slider.appendChild(first_obj)
+            slider.removeChild(sliderObj[0])
+            slider.style.left = 0 + 'px';
+
+        }
+        return true;
+    }
+    if (xpos < final_x) {
+        dist = Math.ceil((final_x-xpos)/10)
+        xpos += dist
+    }
+    if (xpos > final_x) {
+        dist = Math.ceil((xpos-final_x)/10)
+        xpos -= dist;
+    }
+
+    elem.style.left = xpos + 'px';
+
+
+    var repeat = "movement('"+ele_id+"'," + final_x + ","+delay + ",'"+ dir+"')";
+
+
+    elem.move = setTimeout(repeat,delay);
+
+}
+
+
+</script>
+
+<body>
+    <div class="viewArea">
+        <ul id="slider">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
+    </div>
+    <div id="btns">
+        <button type="button">prev</button>
+        <button type="button">next</button>
+    </div>
+</body>
+</html>
